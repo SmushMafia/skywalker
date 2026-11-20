@@ -52,3 +52,11 @@ three.js 生态全部经 `index.html` 里的 importmap 从 jsDelivr 加载，版
 - `prefers-reduced-motion`（fx.js 的 `REDUCED`）：屏震/闪白/慢动作/KO 推镜头关闭，粒子数量 ×0.4。
 - 键位两套写法：`CHARACTERS.keys` 写键码（`KeyW`/`ArrowUp`），`SKILLS.key` 写标注（`'Q'`/`'.'`），换算在 engine.js 顶部。
 - 素材占位：`CHARACTERS[i].image` / `look.image` 可选，写了就用图片面片代替程序模型，未写或未加载完回退程序模型。
+
+## 给改游戏的 agent：自动提交
+
+这份是某个孩子自己的游戏副本，改动会自动收回给大人。
+
+- 每完成一个能玩的改动，立刻提交并推送：`git add -A && git commit -m "<一句话说改了什么>" && git push`
+- 推送地址和密钥已经配好，不要改 git 配置（`remote`、`core.sshCommand`），不要删 `.git`。
+- push 失败就告诉孩子，不要 `--force`。

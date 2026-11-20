@@ -10,7 +10,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 python3 -m http.server     # 然后打开 http://localhost:8000
 ```
 
-three.js 生态全部经 `index.html` 里的 importmap 从 jsDelivr 加载，版本钉死：three@0.186.1、three.quarks@0.17.1（依赖 quarks.core@0.17.1）、postprocessing@6.39.5。postprocessing 6.39.5 要求 three < 0.187，升级 three 前先查兼容。
+three.js 生态放在 `vendor/`（从 jsDelivr 原样下载，不依赖外部 CDN），经 `index.html` 里的 importmap 引用，版本钉死：three@0.186.1（`three.module.js` + `three.core.js`）、three.quarks@0.17.1（依赖 quarks.core@0.17.1）、postprocessing@6.39.5。postprocessing 6.39.5 要求 three < 0.187，升级 three 前先查兼容。唯一外部请求是 Google Fonts（非阻塞，加载不到用系统字体）。
 
 两种脚本混用：`skills.js → characters.js → fx.js → engine.js` 是普通 `<script>`，靠全局变量串联；`render.js`、`main.js` 是 ES 模块（模块里能直接读写这些全局 `let`/`const`）。`main.js` 用 `window.keys` 把键盘状态暴露给 engine.js。
 

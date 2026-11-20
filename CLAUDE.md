@@ -14,12 +14,6 @@ three.js 生态放在 `vendor/`（从 jsDelivr 原样下载，不依赖外部 CD
 
 两种脚本混用：`skills.js → characters.js → fx.js → engine.js` 是普通 `<script>`，靠全局变量串联；`render.js`、`main.js` 是 ES 模块（模块里能直接读写这些全局 `let`/`const`）。`main.js` 用 `window.keys` 把键盘状态暴露给 engine.js。
 
-## 分发给孩子 / 回收
-
-- `tools/new-kid.sh <id> [显示名]`：建公开仓库 `smushO-<id>`（从当前 main 复制，去掉 `tools/ hub/`，往 CLAUDE.md/AGENTS.md 追加 `tools/kid-rules.md` 的自动提交规矩）、加写权限 deploy key、开 Pages，打包 `dist/smushO-<id>.zip`（含密钥，`dist/` 已 gitignore），并写入 `hub/kids.json`。
-- `hub/index.html`：版本切换站，标签 = 骨架 + kids.json 里每个孩子的 Pages 最新版（iframe）。
-- `tools/collect.sh`：fetch 所有 `kid-<id>` remote，之后 `git cherry-pick` 收改动。
-
 ## 项目定位
 
 本地双人同键盘对战游戏的最简框架，目标用户是初中生（口述点子、AI 改配置）。改动要保持这个定位：**优先加配置，不加抽象**；文档和注释精简、机制为主、不自创 flavor。
